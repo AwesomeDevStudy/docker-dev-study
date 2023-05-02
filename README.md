@@ -1,7 +1,9 @@
 ## 사내 도커 스터디
-안녕하세요!:smile: 사내 도커, 컨테이너 실력 향상을 위한 스터디 저장소입니다.              
+안녕하세요!:smile: 사내 도커, 컨테이너 실력 향상을 위한 스터디 저장소입니다.        
 
-<img src="asset/img.png" alt="도커, 컨테이너 빌드업!" style="zoom: 7%;" />
+<img src="asset/image.png" alt="도커, 컨테이너 빌드업!" style="zoom:33%;" />
+
+​      
 
 ### :heavy_check_mark: 매주 스터디 전날까지
 ### :heavy_check_mark: 참여 방법
