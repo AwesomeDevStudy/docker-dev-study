@@ -9,6 +9,5 @@
 
 ## 도커를 활용한 네스워크 실습
 
-```bash
-echo 'ehllo world'
-```
+실행 코드는 "./run_proj_sample_2.sh" 를 확인해 주세요
+nginx 의 로드 밸런서를 사용해 봤습니다.

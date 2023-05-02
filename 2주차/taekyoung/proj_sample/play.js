@@ -4,7 +4,7 @@ const os = require('os');
 
 const content = (req, res) => {
      console.log(`requset from [${req.socket.remoteAddress}]`);
-     return res.end('This is it!' + '\n' + `${os.hostname()}` + '\n');
+     return res.end('This is it from ' + `${os.hostname()}` + '\n');
 }
 
 const web = http.createServer(content);
