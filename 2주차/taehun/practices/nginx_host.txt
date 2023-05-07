@@ -1,0 +1,81 @@
+docker run -d --name=nginx_host \
+
+> --net=host \
+> nginx
+> Unable to find image 'nginx:latest' locally
+> latest: Pulling from library/nginx
+> 9e3ea8720c6d: Already exists
+> bf36b6466679: Pull complete
+> 15a97cf85bb8: Pull complete
+> 9c2d6be5a61d: Pull complete
+> 6b7e4a5c7c7a: Pull complete
+> 8db4caa19df8: Pull complete
+> Digest: sha256:480868e8c8c797794257e2abd88d0f9a8809b2fe956cbfbc05dcc0bca1f7cd43
+> Status: Downloaded newer image for nginx:latest
+> 89d99e8e3ca942c4a6e845a121891ea9ba121e595b637b1e61c8e18aa3a94fdd
+> ubuntu@ip-172-31-10-42:~/Docker$ sudo netstat -nlp | grep 80
+> sudo: netstat: command not found
+> ubuntu@ip-172-31-10-42:~/Docker$ sudo apt-get install net-tools
+> Reading package lists... Done
+> Building dependency tree... Done
+> Reading state information... Done
+> The following NEW packages will be installed:
+> net-tools
+> 0 upgraded, 1 newly installed, 0 to remove and 56 not upgraded.
+> Need to get 204 kB of archives.
+> After this operation, 819 kB of additional disk space will be used.
+> Get:1 http://ap-northeast-2.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 net-tools amd64 1.60+git20181103.0eebece-1ubuntu5 [204 kB]
+> Fetched 204 kB in 0s (8775 kB/s)  
+> Selecting previously unselected package net-tools.
+> (Reading database ... 122433 files and directories currently installed.)
+> Preparing to unpack .../net-tools_1.60+git20181103.0eebece-1ubuntu5_amd64.deb ...
+> Unpacking net-tools (1.60+git20181103.0eebece-1ubuntu5) ...
+> Setting up net-tools (1.60+git20181103.0eebece-1ubuntu5) ...
+> Processing triggers for man-db (2.10.2-1) ...
+> Scanning processes...  
+> Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ubuntu@ip-172-31-10-42:~/Docker$ sudo netstat -nlp | grep 80
+tcp 0 0 0.0.0.0:80 0.0.0.0:_ LISTEN 43203/nginx: master
+tcp6 0 0 :::80 :::_ LISTEN 43203/nginx: master
+unix 2 [ ACC ] STREAM LISTENING 18380 1045/containerd /run/snap.docker/containerd/containerd.sock
+ubuntu@ip-172-31-10-42:~/Docker$ curl localhost:80
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+ubuntu@ip-172-31-10-42:~/Docker$ ps -ef | grep 8967
+ubuntu     43790   42653  0 13:10 pts/12   00:00:00 grep --color=auto 8967
+ubuntu@ip-172-31-10-42:~/Docker$ docker inspect nginx_host | grep IPAddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "",
+                    "IPAddress": "",
