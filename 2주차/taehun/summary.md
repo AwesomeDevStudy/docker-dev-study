@@ -150,4 +150,22 @@ docker diff 명령어
 
 ### 3.2.5 도커 네트워크
 
+개요
+![Alt Text](./asset/images/docker-bridge-network.png)
+
+- 도커 컨테이너 및 서비스는 도커 네트워크를 통해 컨테이너 간 연결 뿐 아니라 다른 애플리케이션 워크로드와도 연결 가능
+- 도커 네트워크 드라이버 사용
+- 도커 설치 시 기본 제공되는 DockerOsms 소프트웨어적으로 구현된 가상 이더넷 브릿지 네트워크, 이것을 통해 격리된 컨테이너 간 통신 제공
+- 별도 브릿지 구성하지 않는 한, 모든 컨테이너는 dockerO 브릿지에 연결
+  (172.17.0.0/16의 CIDR 범위로 IP 할당)
+
+- 도커 네트워크 목록 조회
+  - docker network ls
+    ![Alt Text](./asset/images/docker-network-ls.png)
+
+도커 기본 브리지 네트워크 활용
+
+- 브릿지 모드 네트워크 구성: 도커 데몬을 통해 도커 컨테이너만의 네트워크를 실제 서버 네트워크와 분리해 독립적으로 구성하는 네트워크 방식
+  ![Alt Text](./asset/images/docker-bridge-overlay-network-mode.png)
+
 ### 3.2.6 도커 kill 명령과 초기화
