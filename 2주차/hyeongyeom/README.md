@@ -8,17 +8,17 @@
 $ docker pull --platform linux/amd64 mysql:5.7 
 ```
 
-![practice-image1](assets/practice-image1)
+![practice-image1](assets/practice-image1.png)
 
 ```bash
 $ docker run --platform linux/amd64 -d -p 3306:3306 \
 -e MYSQL_ROOT_PASSWORD=root --name mysql _container mysql:5.7
 ```
 
-![practice-image2](assets/practice-image2)
+![practice-image2](assets/practice-image2.png)
 
 
-![practice-image3](assets/practice-image3)
+![practice-image3](assets/practice-image3.png)
 ## 3-2 컨테이너 모니터링 도구 cAdviosr 컨테이너 실행
 
 ```bash
@@ -34,15 +34,15 @@ sudo docker run \
   zcube/cadvisor:latest
 ```
 
-![practice-image4](assets/practice-image4)
+![practice-image4](assets/practice-image4.png)
 
-![practice-image5](assets/practice-image5)
+![practice-image5](assets/practice-image5.png)
 
-![practice-image6](assets/practice-image6)
+![practice-image6](assets/practice-image6.png)
 
 ## 3-3 Nginx 컨테이너 실행
 
-![practice-image7](assets/practice-image7)
+![practice-image7](assets/practice-image7.png)
 
 ### nginx index.html 파일 수정(copy 방식)
 
@@ -52,7 +52,7 @@ sudo docker run \
 docker cp index.html webserver1:/usr/share/nginx/html/index.html
 ```
 
-![practice-image8](assets/practice-image8)
+![practice-image8](assets/practice-image8.png)
 
 
 
@@ -75,7 +75,7 @@ docker run -d --name vol-test2 \
 > ubuntu:20.04
 ```
 
-![practice-image9](assets/practice-image9)
+![practice-image9](assets/practice-image9.png)
 
 바인드 마운트 vs 볼륨 
 
