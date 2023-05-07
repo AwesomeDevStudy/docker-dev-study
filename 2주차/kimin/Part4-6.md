@@ -13,7 +13,7 @@ tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      
 tcp6       0      0 :::8080                 :::*                    LISTEN      75815/docker-proxy  
 ```
 
-<img src="assets/image-20230504232243302.png" alt="image-20230504232243302" style="zoom:50%;" />
+<img src="assets/image-20230504232243302.png" alt="image-20230504232243302" style="zoom: 25%;" />
 
 
 
