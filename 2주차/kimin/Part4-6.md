@@ -13,7 +13,7 @@ tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      
 tcp6       0      0 :::8080                 :::*                    LISTEN      75815/docker-proxy  
 ```
 
-<img src="assets/image-20230504232243302.png" alt="image-20230504232243302" style="zoom: 25%;" />
+<img src="assets/image-20230504232243302.png" alt="image-20230504232243302" width="30%" height="30%" />
 
 
 
@@ -27,7 +27,7 @@ docker network create -d bridge app-net
 ifconfig
 ```
 
-![image-20230507144422078](assets/image-20230507144422078.png)
+<img src="assets/image-20230507144422078.png" alt="image-20230507144422078" width="30%" height="30%"  />
 
 - docker0가 아닌 772eb5d288a5의 ID를 가지는 네트워크 대역이 다른(127.18.0.0/16) 독립된 브리지 네트워크 `app-net` 생성
 
@@ -38,7 +38,7 @@ docker run -it --name ubuntu-container --net app-net ubuntu:14.04 bash
 root@a920672c22eb:/# ifconfig
 ```
 
-![image-20230507144824595](assets/image-20230507144824595.png)
+<img src="assets/image-20230507144824595.png" alt="image-20230507144824595" width="30%" height="30%"  />
 
 - ubuntu-container 컨테이너가 app-net 네트워크 대역에 순차적으로 할당되었음을 확인
 
