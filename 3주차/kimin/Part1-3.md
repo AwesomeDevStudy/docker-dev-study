@@ -1,3 +1,5 @@
+
+
 ## 실습 4-1. 쉘 스크립트를 이용한 환경 구성 실습
 
 ```bash
@@ -9,6 +11,8 @@ docker build -f Dockerfile.ex4_1 -t webapp:7.0 .
 # 컨테이너 실행
 docker run -itd -p 8007:80 --name webapp07 webapp:7.0
 ```
+
+![image-20230511234208774](assets/image-20230511234208774.png)
 
 
 - 정상적으로 실행된 모습을 확인할 수 있음
@@ -32,6 +36,8 @@ docker build -f Dockerfile.ex4_2 -t webapp:8.0 .
 # 컨테이너 실행
 docker run -itd -p 8008:80 --name webapp08 webapp:8.0
 ```
+
+![image-20230511234142392](assets/image-20230511234142392.png)
 
 - 정상적으로 실행된 모습을 확인할 수 있음
 - 많이 사용할 일이 있을까 싶다. 
@@ -59,6 +65,7 @@ webapp       8.0       58adf1f9c87a   33 minutes ago       266MB
 - 기존에 비해 약 62MB가 줄어들었음을 확인할 수 있다.
 
 ### 다이브 실습
+
 ```bash
 # 다이브 비교 1: 임시파일 유지
 docker run --rm -it \
@@ -68,6 +75,10 @@ docker run --rm -it \
 -v "$HOME/.dive.yaml":"$HOME/.dive.yaml" \
 wagoodman/dive:latest build -f Dockerfile.ex4_2  -t lab2-webapp:8.0 .
 ```
+
+![image-20230511233730419](assets/image-20230511233730419.png)
+
+- 이미지 사이즈 266MB
 
 ```bash
 # 다이브 비교 2: 임시파일 삭제
@@ -79,3 +90,6 @@ docker run --rm -it \
 wagoodman/dive:latest build -f Dockerfile.ex4_3  -t lab2-webapp:9.0 .
 ```
 
+![image-20230511234052925](assets/image-20230511234052925.png)
+
+- 이미지 사이즈 204MB
