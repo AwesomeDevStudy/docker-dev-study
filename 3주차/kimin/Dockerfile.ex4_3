@@ -1,0 +1,19 @@
+FROM ubuntu:14.04
+# 작성자 정보 입력 
+MAINTAINER "kimin <mcuwwa29@gmail.com>"
+# 이미지 설명 
+LABEL "purpose"="container web 경량화 어플리케이션 실습"
+# 필요 패키지 설치 후 캐시를 모두 삭제
+RUN apt-get update && \
+    apt-get -y install apache2 -y -qq --no-install-recommends && \
+    apt-get clean -y && \
+    apt-get autoremove -y && \ 
+    rm -rfv /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# 다운로드한 웹 소스 압축을 기본 경로에 복사
+ADD webapp.tar.gz /var/www/html
+# 해당 경로로 이동, 기본 실행 경로
+WORKDIR /var/www/html
+# 컨테이너 80번 포트 개방
+EXPOSE 80
+# 컨테이너 실행 시 자동으로 아파치 데몬 실행
+CMD apachectl -D FOREGROUND
