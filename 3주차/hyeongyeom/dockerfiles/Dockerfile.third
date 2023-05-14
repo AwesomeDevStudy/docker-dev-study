@@ -1,0 +1,28 @@
+##이미지 용량 절감 명령어 제거 Dockerfile
+
+## base image ubuntu:14.04
+FROM ubuntu:14.04
+
+# 작성자 정보 
+MAINTAINER "hyeongyeom <wltnwkd241@gmail.com>"
+
+# 이미지 설명
+LABEL "purpose"="docker webserver practice"
+
+# 패키지 설치 후 apt 캐시 삭제 및 자동 권장 패키지 설치 중단
+RUN apt-get update && \
+    apt-get -y install apache2  
+
+# 해당 경로로 이동
+WORKDIR /var/www/html
+
+# 호스트 파일 index.html 복사(copy)
+ADD ../index.html .
+
+# 컨테이너 80번 포트 오픈
+EXPOSE 80
+
+# 컨테이너 실행 시 자동으로 아파치 데몬 실행
+CMD apachectl -D FOREGROUND
+
+
