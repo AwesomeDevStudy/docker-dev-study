@@ -1,0 +1,20 @@
+version: "1.0"
+services:
+  faastapi:
+    build: .
+    container_name: web_collor_balls
+    ports:
+      - 3030:3030
+    working_dir: /server
+    volumes:
+      - ./src:/server/src
+    command: /bin/bash -c "echo ./requirements.txt"
+    command: /bin/bash -c "
+        apt-get update &&
+        apt-get install neovim -y -qq --no-install-recommends &&
+        apt-get clean -y &&
+        apt-get autoremove -y &&
+        rm -rfv /var/lib/apt/lists/* /tmp/* /var/tmp/*
+      "
+    command: python -m uvicorn src.main:app --host 0.0.0.0 --port 3030 --reload --reload-dir .
+
