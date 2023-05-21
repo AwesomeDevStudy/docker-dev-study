@@ -14,8 +14,7 @@ def python_flask() :
 
     return '''<h1 style="text-align:center; color: deepskyblue;">docker-compose application: FlasK & Redis</h1>
     <p style="text-align:center; color:deepskyblue;">Good container service.</p> 
-    <p style="text-align:center; color:deepskyblue;">Web access count: {} times</p>'''
-    format(cnt)
+    <p style="text-align:center; color:deepskyblue;">Web access count: {} times</p>'''.format(cnt)
 
 if __name__=="__main__":
     py_app.run(host='0.0.0.0', port=9000, debug=True)
