@@ -1,0 +1,22 @@
+version: "3"
+services:
+  pyfla_app1:
+    build: ./pyfla_app1
+    ports:
+      - "5001:5000"
+  pyfla_app2:
+    build: ./pyfla_app2
+    ports:
+      - "5002:5000"
+  pyfla_app3:
+    build: ./pyfla_app3
+    ports:
+      - "5003:5000"
+  nginx:
+    build: ./nginx_alb
+    ports:
+      - "8080:80"
+    depends_on:
+      - pyfla_app1
+      - pyfla_app2
+      - pyfla_app3
