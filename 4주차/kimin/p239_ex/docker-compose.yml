@@ -1,0 +1,26 @@
+# docker-compose 버전 명시
+version: '3.8'
+
+# 사용할 image들 즉, 생성할 컨테이너
+services:
+  redis:
+    # 컨테이너 생성에 사용할 이미지
+    image: redis:6-alpine
+    # 포트포워딩 ( -p )
+    ports:
+      - 6379:6379
+    # 컨테이너가 종료되도 계속 실행
+    restart: always
+  flask:
+    # Dockerfile build 옵션
+    build: 
+      # 사용할 Dockerfile위치
+      context: ./
+      # 사용할 Dockerfile이름
+      dockerfile: Dockerfile
+    ports:
+      - 9000:9000
+    # redis부터 실행하고 flask를 이어서 실행
+    depends_on:
+      - redis
+    restart: always
