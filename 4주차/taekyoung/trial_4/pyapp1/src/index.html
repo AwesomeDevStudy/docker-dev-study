@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+    const red = "red";
+    const blue = "blue";
+    const setColor = (exColor, newColor) => {
+        const exCanvas = document.getElementById("exCanvas");
+        const newCanvas = document.getElementById("newCanvas");
+
+        const exCtx = exCanvas.getContext("2d");
+        const newCtx = newCanvas.getContext("2d");
+
+        console.log(exColor);
+        if (exColor) {
+            exCtx.beginPath();
+            exCtx.arc(100, 100, 50, 0, 2 * Math.PI);
+            exCtx.fillStyle = exColor;
+            exCtx.stroke();
+            exCtx.fill();
+        }
+
+        newCtx.beginPath();
+        newCtx.arc(100, 100, 80, 0, 2 * Math.PI);
+        newCtx.fillStyle = newColor;
+        newCtx.stroke();
+        newCtx.fill();
+    }
+</script>
+</head>
+<body>
+
+    <title> two-balls </title>
+    <header> show red or blue ball </header>
+
+    <div>
+        old ball
+        <div>
+            <canvas id="exCanvas" width="200" height="200"></canvas>
+        </div>
+    </div>
+    <div>
+        new ball
+        <div>
+            <canvas id="newCanvas" width="200" height="200"></canvas>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <p>you are - <span id="client_ip"></span></p>
+    </div>
+    <div>
+        <p>red count: <span id="red_count"></span></p>
+        <p>blue count: <span id="blue_count"></span></p>
+    </div>
+
+<script>
+    const getCookie = (key) => {
+        const re = new RegExp(`${key}=([a-zA-Z]+)`, "gm");
+        const execRes = re.exec(document.cookie);
+        if (execRes) {
+            return execRes[1];
+        } else {
+            return null;
+        }
+    }
+    fetch("/ball", {
+        method: "GET", // *GET, POST, PUT, DELETE, etc.
+        mode: "same-origin", // no-cors, *cors, same-origin
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => response.json())
+    .then((data) => {
+        console.log(`message: ${data.message}, status: ${data.status}`);
+        setColor(
+            getCookie("ex_ball_color"),
+            getCookie("new_ball_color")
+        );
+        document.getElementById("red_count").innerText = data.red;
+        document.getElementById("blue_count").innerText = data.blue;
+        document.getElementById("client_ip").innerText = data.you;
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+version: '3'
+services:
+  pyapp1:
+    build: ./pyapp1
+    ports:
+      - "5001:3030"
+    working_dir: /server
+    volumes:
+      - ./pyapp1/src:/server/src
+    command: /bin/bash -c "echo ./requirements.txt"
+    command: /bin/bash -c "
+        apt-get update &&
+        apt-get install neovim -y -qq --no-install-recommends &&
+        apt-get clean -y &&
+        apt-get autoremove -y &&
+        rm -rfv /var/lib/apt/lists/* /tmp/* /var/tmp/*
+      "
+    command: python -m uvicorn src.main:app --host 0.0.0.0 --port 3030 --reload --reload-dir .
+  pyapp2:
+    build: ./pyapp1
+    ports:
+      - "5002:3030"
+    working_dir: /server
+    volumes:
+      - ./pyapp1/src:/server/src
+    command: /bin/bash -c "echo ./requirements.txt"
+    command: /bin/bash -c "
+        apt-get update &&
+        apt-get install neovim -y -qq --no-install-recommends &&
+        apt-get clean -y &&
+        apt-get autoremove -y &&
+        rm -rfv /var/lib/apt/lists/* /tmp/* /var/tmp/*
+      "
+    command: python -m uvicorn src.main:app --host 0.0.0.0 --port 3030 --reload --reload-dir .
+  pyapp3:
+    build: ./pyapp1
+    ports:
+      - "5003:3030"
+    working_dir: /server
+    volumes:
+      - ./pyapp1/src:/server/src
+    command: /bin/bash -c "echo ./requirements.txt"
+    command: /bin/bash -c "
+        apt-get update &&
+        apt-get install neovim -y -qq --no-install-recommends &&
+        apt-get clean -y &&
+        apt-get autoremove -y &&
+        rm -rfv /var/lib/apt/lists/* /tmp/* /var/tmp/*
+      "
+    command: python -m uvicorn src.main:app --host 0.0.0.0 --port 3030 --reload --reload-dir .
+  nginx:
+    build: ./nginx_alb
+    ports:
+      - "8080:80"
+    depends_on:
+      - pyapp1
+      - pyapp2
+      - pyapp3
