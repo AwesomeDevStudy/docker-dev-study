@@ -1,5 +1,7 @@
 ## 1. Azure로 프로젝트 구성하기
 
+![image](https://tech.cloudmt.co.kr/2022/12/26/deploy-container-application-with-cicd/images/architecture.png)
+
 #### 첫 번째, 사전 작업
 
 1. Docker를 사용할 VM 배포
