@@ -18,6 +18,17 @@
 
 ## 환경 설정
 
-### MocroK8s 설치
+### MicroK8s 설치
 
-1. 
+1. snap 명령어를 사용한 microk8s 설치 및 권한 인가
+```bash
+$ sudo snap install microk8s --classic --channel=1.27
+$ sudo usermod -a -G microk8s $USER
+$ sudo chown -f -R $USER ~/.kube
+$ microk8s kubectl get nodes
+```
+2. microk8s의 Dashboard, DNS 기능 활성화
+```bash
+$ microk8s enable dns
+$ microk8s enable dashboard
+```
